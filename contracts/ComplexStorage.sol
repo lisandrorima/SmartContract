@@ -41,4 +41,7 @@ contract ComplexStorage {
         deviceDataArray.push(structs1[address1]);
         deviceDataArray.push(structs1[address2]);
     }
+
+
 }
+   

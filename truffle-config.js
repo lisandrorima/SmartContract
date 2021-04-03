@@ -9,6 +9,14 @@ module.exports = {
       host: "127.0.0.1",
       port: 8545,
       network_id: "*"
+    },
+
+    private: {
+      host: "127.0.0.1",
+      port: 7545,             // Custom port
+      network_id: 5777,       // Custom network
+      gas: 6721975,           // Gas sent with each transaction (default: ~6700000)
+      network_id: "*"
     }
   }
 };
