@@ -38,18 +38,7 @@ contract Rental{
     }    
     
     function getApt (uint id)public  returns (Apartment memory){
-       return SingleApt = Apartment(id, Apartments[id]._direccion, Apartments[id]._metros, Apartments[id]._propietario);
-
-    /* uint[] memory mediaAssetIds = new uint[](mediaDatabase[_user].length);
-
-    uint numberOfMediaAssets = 0;
-
-    for(uint i = 1; i <= mediaDatabase[_user].length;  i++) {
-        mediaAssetIds[numberOfMediaAssets] = mediaDatabase[_user][i].id;
-        numberOfMediaAssets++;
-    }
-    return mediaAssetIds;    */
-    
+       return SingleApt = Apartment(id, Apartments[id]._direccion, Apartments[id]._metros, Apartments[id]._propietario);    
     }
         
 

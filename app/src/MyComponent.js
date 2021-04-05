@@ -1,12 +1,52 @@
 import React from "react";
 import { newContextComponents } from "@drizzle/react-components";
 import logo from "./logo.png";
-
 const { AccountData, ContractData, ContractForm } = newContextComponents;
 
+
+function printProperties(drizzle, drizzleState) {
+  let a = <ContractData
+    drizzle={drizzle}
+    drizzleState={drizzleState}
+    contract="Rental"
+    method="apartmentCount"
+    toUtf8
+  />
+  console.log(a.type.propTypes.contract.length)
+  let items = []
+  let index=1;
+
+  
+  while (index<=a.type.propTypes.contract.length) {
+    items.push(<div key={index}> <ContractData
+      drizzle={drizzle}
+      drizzleState={drizzleState}
+      contract="Rental"
+      method="Apartments"
+      methodArgs={[[index]]}
+    /></div>)
+    index+=1;
+    }
+    
+  return (
+
+    items
+
+
+  )
+}
+
+
+
+
+
+
 export default ({ drizzle, drizzleState }) => {
+
+
   // destructure drizzle and drizzleState from props
   return (
+
     <div className="App">
       <div>
         <img src={logo} alt="drizzle-logo" />
@@ -46,50 +86,18 @@ export default ({ drizzle, drizzleState }) => {
       </div>
 
       <div className="section">
-        <h2>Propiedades en alquiler</h2>
-        <p>
-          Estas son las propiedades actualmente en alquiler.
-        </p>
-        <p>
-          <strong>String 1: </strong>
-          <ContractData
-            drizzle={drizzle}
-            drizzleState={drizzleState}
-            contract="ComplexStorage"
-            method="string1"
-            toUtf8
-          />
-        </p>
-        <p>
-          <strong>String 2: </strong>
-          <ContractData
-            drizzle={drizzle}
-            drizzleState={drizzleState}
-            contract="ComplexStorage"
-            method="string2"
-            toUtf8
-          />
-        </p>
-        <strong>Single Device Data: </strong>
-        <ContractData
-          drizzle={drizzle}
-          drizzleState={drizzleState}
-          contract="ComplexStorage"
-          method="string2"
-          
-        />
+
         <strong>Ingrese departamento para alquilar: </strong>
         <ContractForm drizzle={drizzle} contract="Rental" method="addAppartment" />
 
+        <h2>Propiedades en alquiler</h2>
+
         <ContractForm drizzle={drizzle} contract="Rental" method="getApt" />
-        <ContractData
-          drizzle={drizzle}
-          drizzleState={drizzleState}
-          contract="Rental"
-          method="SingleApt"
-          
-        />
+
         
+
+        {printProperties(drizzle, drizzleState)}
+
       </div>
     </div>
   );
